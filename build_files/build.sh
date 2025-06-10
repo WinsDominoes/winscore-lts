@@ -18,7 +18,7 @@ dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscal
 dnf -y install tailscale distrobox ublue-brew uupd podman cockpit samba
 
 
-dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
+dnf config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo"
 dnf config-manager --set-disabled docker-ce-stable
 dnf -y --enablerepo docker-ce-stable install \
 	docker-ce \
