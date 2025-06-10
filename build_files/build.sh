@@ -34,7 +34,9 @@ dnf -y --enablerepo docker-ce-stable install \
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
-
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/tailscale.repo
+dnf -y copr disable ublue-os/packages
+dnf -y remove PackageKit
 #### Example for enabling a System Unit File
 systemctl enable brew-setup.service
 systemctl enable tailscaled.service
