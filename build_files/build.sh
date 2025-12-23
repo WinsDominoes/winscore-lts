@@ -45,6 +45,7 @@ systemctl enable podman.socket
 systemctl enable docker.socket
 systemctl enable sshd.service
 systemctl enable brew-upgrade.service
-systemctl enalbe brew-upgrade.timer
+systemctl enable brew-upgrade.timer
 systemctl enable brew-update.timer
-systemctl enalbe brew-update.service
+systemctl enable brew-update.service
+systemctl --global enable podman-auto-update.timer
