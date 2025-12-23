@@ -12,10 +12,11 @@ set -ouex pipefail
 dnf install -y 'dnf-command(config-manager)' epel-release
 dnf config-manager --set-enabled crb
 dnf -y copr enable ublue-os/packages
+dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox uupd podman cockpit samba
+dnf -y install tailscale distrobox uupd podman cockpit samba run0edit
 
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
