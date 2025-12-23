@@ -49,3 +49,4 @@ systemctl enable brew-upgrade.timer
 systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
+systemctl enable rechunker-group-fix.service
