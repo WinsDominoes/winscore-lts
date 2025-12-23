@@ -169,3 +169,5 @@ jobs:
           TAGS: ${{ steps.push.outputs.digest }}
           COSIGN_EXPERIMENTAL: false
           COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
+          COSIGN_REGISTRY_USERNAME: ${{ github.actor }}
+          COSIGN_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
