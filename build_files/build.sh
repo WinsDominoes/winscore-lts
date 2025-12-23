@@ -15,10 +15,10 @@ dnf -y copr enable ublue-os/packages
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox ublue-brew uupd podman cockpit samba
+dnf -y install tailscale distrobox uupd podman cockpit samba
 
 
-dnf config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo"
+dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
 dnf config-manager --set-disabled docker-ce-stable
 dnf -y --enablerepo docker-ce-stable install \
 	docker-ce \
@@ -44,3 +44,7 @@ systemctl enable uupd.timer
 systemctl enable podman.socket
 systemctl enable docker.socket
 systemctl enable sshd.service
+systemctl enable brew-upgrade.service
+systemctl enalbe brew-upgrade.timer
+systemctl enable brew-update.timer
+systemctl enalbe brew-update.service
