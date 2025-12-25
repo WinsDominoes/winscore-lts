@@ -16,7 +16,7 @@ dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc
+dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc ublue-setup-services
 
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
@@ -52,6 +52,11 @@ systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
 systemctl enable rechunker-group-fix.service
+
+
+source /usr/lib/ublue/setup-services/libsetup.sh
+
+version-script dx-usergroups-lts privileged 1 || exit 0
 
 # Function to append a group entry to /etc/group
 append_group() {
