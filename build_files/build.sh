@@ -16,7 +16,7 @@ dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc
+dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc nmcli
 
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
@@ -39,6 +39,7 @@ dnf -y --enablerepo docker-ce-stable install \
 sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/tailscale.repo
 dnf -y copr disable ublue-os/packages
 dnf -y remove PackageKit subscription-manager
+dnf -y copr disable secureblue/run0edit
 #### Example for enabling a System Unit File
 systemctl enable brew-setup.service
 systemctl enable tailscaled.service
@@ -66,4 +67,9 @@ cat >/usr/lib/sysusers.d/docker.conf <<'EOF'
 g docker -
 EOF
 
+rm -f /usr/bin/chsh
+rm -f /usr/bin/chfn
+rm -f /usr/bin/pkexec
+rm -f /usr/bin/sudo
+rm -f /usr/bin/su
 
