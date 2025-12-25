@@ -52,6 +52,8 @@ systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
 systemctl enable rechunker-group-fix.service
+systemctl enable ublue-system-setup.service
+systemctl --global enable ublue-user-setup.service
 
 
 source /usr/lib/ublue/setup-services/libsetup.sh
