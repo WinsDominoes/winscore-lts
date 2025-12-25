@@ -16,7 +16,7 @@ dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc ublue-setup-services
+dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc
 
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
@@ -51,29 +51,19 @@ systemctl enable brew-upgrade.timer
 systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
-systemctl enable rechunker-group-fix.service
-systemctl enable ublue-system-setup.service
-systemctl --global enable ublue-user-setup.service
 
 
-source /usr/lib/ublue/setup-services/libsetup.sh
+# /*
+# docker sysctl.d
+# */
+mkdir -p /usr/lib/sysctl.d
+echo "net.ipv4.ip_forward = 1" >/usr/lib/sysctl.d/docker-ce.conf
 
-version-script dx-usergroups-lts privileged 1 || exit 0
-
-# Function to append a group entry to /etc/group
-append_group() {
-	local group_name="$1"
-	if ! grep -q "^$group_name:" /etc/group; then
-		echo "Appending $group_name to /etc/group"
-		grep "^$group_name:" /usr/lib/group | tee -a /etc/group >/dev/null
-	fi
-}
-
-# Setup Groups
-append_group docker
+# /*
+# sysusers.d for docker
+# */
+cat >/usr/lib/sysusers.d/docker.conf <<'EOF'
+g docker -
+EOF
 
 
-mapfile -t wheelarray < <(getent group wheel | cut -d ":" -f 4 | tr ',' '\n')
-for user in "${wheelarray[@]}"; do
-	usermod -aG docker "$user"
-done
