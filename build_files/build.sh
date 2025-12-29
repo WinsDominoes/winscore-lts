@@ -21,7 +21,7 @@ dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc Ne
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
 dnf config-manager --set-disabled docker-ce-stable
-dnf -y install rsync
+dnf -y install rsync rsnapshot
 dnf -y --enablerepo docker-ce-stable install \
 	docker-ce \
 	docker-ce-cli \
