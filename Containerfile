@@ -20,7 +20,7 @@ FROM quay.io/almalinuxorg/almalinux-bootc:10.1
 # Copy Homebrew files from the brew image
 COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
 COPY /files /
-COPY --from=ghcr.io/pinniped-containers/hardened_malloc: /install /usr/local/lib/
+COPY --from=ghcr.io/pinniped-containers/hardened_malloc:latest /install /usr/local/lib/
 ENV LD_PRELOAD="/usr/local/lib/libhardened_malloc.so"
 
 
