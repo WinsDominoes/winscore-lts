@@ -52,11 +52,8 @@ systemctl enable brew-upgrade.timer
 systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
-systemctl disable bootc-fetch-apply-updates.timer
-systemctl mask bootc-fetch-apply-updates.service
-systemctl mask bootc-status-updated.path
-systemctl mask bootc-status-updated.target
-systemctl mask bootc-fetch-apply-updates.timer
+systemctl enable bootc-fetch-apply-updates.timer
+
 
 
 # /*
