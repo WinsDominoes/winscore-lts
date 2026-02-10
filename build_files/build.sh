@@ -14,7 +14,7 @@ dnf config-manager --set-enabled crb
 dnf -y copr enable ublue-os/packages
 dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
-dnf install -y http://mirror.yandex.ru/altlinux/p10/branch/noarch/RPMS.classic/cpu-checker-0.7-alt2.p10.1.noarch.rpm
+dnf install -y http://mirror.yandex.ru/altlinux/p11/branch/x86_64/RPMS.classic/cpu-checker-0.7-alt3.x86_64.rpm
 # this installs a package from fedora repos
 dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc NetworkManager libvirt qemu-kvm
 
