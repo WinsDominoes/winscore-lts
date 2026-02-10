@@ -53,6 +53,8 @@ systemctl enable brew-update.timer
 systemctl enable brew-update.service
 systemctl --global enable podman-auto-update.timer
 systemctl enable bootc-fetch-apply-updates.timer
+sudo systemctl enable libvirtd
+sudo systemctl enable virtlogd
 
 
 
