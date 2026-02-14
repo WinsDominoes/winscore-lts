@@ -15,7 +15,7 @@ dnf -y copr enable ublue-os/packages
 dnf -y copr enable secureblue/run0edit
 dnf config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
 # this installs a package from fedora repos
-dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc NetworkManager libvirt qemu-kvm cmake
+dnf -y install tailscale distrobox uupd podman cockpit samba run0edit git gcc NetworkManager libvirt qemu-kvm cmake llvm
 
 
 dnf config-manager --add-repo "https://download.docker.com/linux/rhel/docker-ce.repo"
